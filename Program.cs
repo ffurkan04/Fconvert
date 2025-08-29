@@ -1,10 +1,10 @@
 ﻿using System.CommandLine;
 
-var rootCommand = new RootCommand("FConverter");
-var convertCommand = new Command("fconvert", "convert");
+var rootCommand = new RootCommand("File Converter");
+var convertCommand = new Command("convert", "Convert files from one format to another");
 
-var inputArg = new Argument<string>("input", "source file");
-var outputArg = new Argument<string>("output", "target file");
+var inputArg = new Argument<string>("input", "Source file");
+var outputArg = new Argument<string>("output", "Target file");
 convertCommand.AddArgument(inputArg);
 convertCommand.AddArgument(outputArg);
 
