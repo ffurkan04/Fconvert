@@ -1,7 +1,7 @@
 using CsvHelper;
 using System.Globalization;
 using System.Text.Json;
-public class CvsToJsonConventer : IFConvertor
+public class CvsToJsonConventer : IFConverter
 {
     public bool CanConvert(string inputExtension, string outputExtension)
     {

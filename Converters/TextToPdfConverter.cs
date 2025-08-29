@@ -1,7 +1,7 @@
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 
-public class TextToPdfConverter : IFConvertor
+public class TextToPdfConverter : IFConverter
 {
     public bool CanConvert(string inputExtension, string outputExtension)
     {

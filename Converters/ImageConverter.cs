@@ -2,7 +2,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
 //I am using these libaries for cross-platform support. 
-public class ImageConverter : IFConvertor
+public class ImageConverter : IFConverter
 {
     public bool CanConvert(string inputExtension, string outputExtension)
     {

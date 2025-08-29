@@ -1,5 +1,5 @@
 using FFMpegCore;
-public class MP4ToMP3Converter : IFConvertor
+public class MP4ToMP3Converter : IFConverter
 {
     public bool CanConvert(string inputExtension, string outputExtension)
     {
