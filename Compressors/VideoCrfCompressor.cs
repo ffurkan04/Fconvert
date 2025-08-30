@@ -63,7 +63,7 @@ public static class VideoCrfCompressor
             while (!p.StandardError.EndOfStream)
             {
                 var line = await p.StandardError.ReadLineAsync();
-                // Basitleştirilmiş log
+                //Log 
                 if (!string.IsNullOrWhiteSpace(line) && (line.Contains("frame=") || line.Contains("bitrate=") || line.Contains("time=")))
                     Console.WriteLine(line);
             }
