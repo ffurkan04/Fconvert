@@ -1,6 +1,8 @@
 using System.CommandLine;
+using System.CommandLine.Invocation;
 using System.Security.Cryptography.X509Certificates;
 using FFMpegCore.Arguments;
+using Fconventer.VideoCrfCompressorCommand;
 class CompressorCommand
 {
     public static Command Build()
@@ -55,6 +57,31 @@ class CompressorCommand
         compress.AddOption(audioKbps);
         compress.AddOption(noSubsOpt);
         compress.AddOption(ffmpegOpt);
+
+        compress.SetHandler(async (InvocationContext ctx) =>
+        {
+            var input  = ctx.ParseResult.GetValueForArgument(inputArg);
+            var output = ctx.ParseResult.GetValueForArgument(outputArg);
+            var options = new VideoCrfOptions
+            {
+                input = input,
+                output = output,
+                Codec = ctx.ParseResult.GetValueForOption(codecOpt) ?? "libx264",
+                Crf = ctx.ParseResult.GetValueForOption(crfOpt),
+                preset = ctx.ParseResult.GetValueForOption(presetOpt)?? "medium",
+                copyAudio = ctx.ParseResult.GetValueForOption(copyAudio),
+                audioKbps = ctx.ParseResult.GetValueForOption(audioKbps),
+                DropSubtitles = ctx.ParseResult.GetValueForOption(noSubsOpt),
+                ffmpeg = string.IsNullOrWhiteSpace(ctx.ParseResult.GetValueForOption(ffmpegOpt))
+                    ? "ffmpeg"
+                    : ctx.ParseResult.GetValueForOption(ffmpegOpt)!
+
+            };
+
+            var ok=await VideoCrfCompressor.RunAsync(options);
+
+            Console.WriteLine(ok ? "File compressed" : "Compression failed");
+        });
 
 
         return compress;
