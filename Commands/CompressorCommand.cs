@@ -8,7 +8,7 @@ class CompressorCommand
     public static Command Build()
     {
         //This system compress file with CRF. 
-        var compress = new Command("compress", "Compress video files");
+        var compress = new Command("c-video", "Compress video files");
 
         var inputArg = new Argument<string>("input", "Target file (mp4/mkv/avi...)");
         var outputArg = new Argument<string>("output", "Output file (.mp4/.mkv)");

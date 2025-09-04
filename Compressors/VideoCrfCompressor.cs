@@ -54,7 +54,7 @@ public static class VideoCrfCompressor
             CreateNoWindow = true,
         };
 
-        Console.WriteLine($"▶ FFmpeg: {options.ffmpeg} {args}");
+        Console.WriteLine($"FFmpeg: {options.ffmpeg} {args}");
         using var p = Process.Start(psi);
         if (p == null) { Console.WriteLine("FFmeg could not start"); return false; }
 
